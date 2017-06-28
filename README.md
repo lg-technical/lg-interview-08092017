@@ -50,4 +50,50 @@ setting up separate database outside of project.
 - code should be properly tested
 - service dependencies and lifecycle should be managed by proper tool (maven, gradle, sbt)
 
+## Example:
 
+Given the following sequence of json requests:
+
+```json
+{
+    "userId"    :   "111",
+    "courseId"  :   "222",
+    "type"      :   "init" ,
+    "timestamp" :   "2017-06-28 14:21:45.375193+02:00"
+}
+
+{   
+    "userId"    :   "111",
+    "courseId"  :   "222", 
+    "type"      :   "save" ,
+    "score"     :   5,
+    "timestamp" :   "2017-06-28 14:23:45.375193+02:00"
+}
+
+{   
+    "userId"    :   "111",
+    "courseId"  :   "222", 
+    "type"      :   "save" ,
+    "score"     :   15,
+    "timestamp" :   "2017-06-28 14:25:54.375193+02:00"
+}
+
+{   
+    "userId"    :   "111",
+    "courseId"  :   "222", 
+    "type"      :   "finish" ,
+    "timestamp" :   "2017-06-28 14:27:46.375193+02:00"
+}
+```
+
+The result of `GET /session/user/111/course/222/state` should be:
+
+```json
+{
+    "started_date"          : "2017-06-28 14:21:45.375193+02:00",
+    "total_session_time"    : "361",
+    "end_date"              : "2017-06-28 14:27:41.375193+02:00",
+    "best_score"            : "15",
+    "average_score"         : "10"
+}
+```
