@@ -19,7 +19,7 @@ Course score inside session is overridden with every new not empty score provide
     "courseId"  :   "some_string_with",
     "type"      :   "type of request (init, save or finish)" ,
     "score"     :   "optional int parameter with user score",
-    "timestamp" :   "ISO-8601 date time when request was issued"
+    "timestamp" :   "ISO-8601 date time when request was issued (any timezone)"
 }
 ```
 
@@ -31,9 +31,9 @@ Course score inside session is overridden with every new not empty score provide
 
 ```json
 {
-    "started_date"          : "ISO-8601 date when course was started first time",
+    "started_date"          : "ISO-8601 date when course was started first time in UTC",
     "total_session_time"    : "time (in seconds) of all users session",
-    "end_date"              : "ISO-8601 date when course was finished last time",
+    "end_date"              : "ISO-8601 date when course was finished last time in UTC",
     "best_score"            : "best of session end scores",
     "average_score"         : "average of session end scores"
 }
@@ -90,9 +90,9 @@ The result of `GET /session/user/111/course/222/state` should be:
 
 ```json
 {
-    "started_date"          : "2017-06-28 14:21:45.375193+02:00",
+    "started_date"          : "2017-06-28 12:21:45.375193+00:00",
     "total_session_time"    : "361",
-    "end_date"              : "2017-06-28 14:27:41.375193+02:00",
+    "end_date"              : "2017-06-28 12:27:41.375193+00:00",
     "best_score"            : "15",
     "average_score"         : "10"
 }
