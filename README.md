@@ -1,4 +1,4 @@
-# lg-interview-08092017
+# lg-interview-26092017
 
 Create simple service for keeping elearning course status data. It has to be able to accept
 entries about user progress (in json format), store them (somehow) and allow to retrieve some data from it.
